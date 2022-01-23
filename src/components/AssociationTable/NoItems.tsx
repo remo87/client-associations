@@ -1,5 +1,10 @@
-import React from 'react';
+import React from "react";
+import { FullRowCenter } from "../styled";
 
 export const NoItems = () => {
-  return <div>No items</div>;
+  return (
+    <FullRowCenter>
+      <h3>No items</h3>
+    </FullRowCenter>
+  );
 };

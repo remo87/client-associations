@@ -25,6 +25,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build-prod": "cp ./src/config/config.ts ./src/config/config.bak.ts && cp ./src/config/config-prod.ts ./src/config/config.ts && react-scripts build && cp ./src/config/config.bak.ts ./src/config/config.ts && rm ./src/config/config.bak.ts",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

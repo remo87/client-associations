@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Row } from "../styled";
 import { FaMinus, FaPlus } from "react-icons/fa";
-import { Data } from "../../interfaces/associations";
 import { Graph } from ".";
+import { IDataListItem } from "../../interfaces/graphql";
 
 export interface IProps {
-  association: Data;
+  association: IDataListItem;
 }
 
 export const TableRow = ({ association }: IProps) => {
@@ -24,18 +24,18 @@ export const TableRow = ({ association }: IProps) => {
             target="_blank"
             href={
               `https://platform.opentargets.org/target/` +
-              association.target?.id
+              association.id
             }
             rel="noreferrer"
           >
-            {association.target?.geneInfo?.symbol}
+            {association.symbol}
           </a>
         </td>
-        <td>{association.target?.geneInfo?.name}</td>
-        <td>{association.associationScore?.overall?.toFixed(4)}</td>
+        <td>{association.name}</td>
+        <td>{association.overall?.toFixed(4)}</td>
       </Row>
       {expanded ? (
-        <Graph targetId={association.target?.id || ""} />
+        <Graph targetId={association.id || ""} />
       ) : null}
     </>
   );
