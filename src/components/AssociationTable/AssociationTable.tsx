@@ -1,7 +1,7 @@
 import React from "react";
 import { useAssociationList } from "../../hooks/useAssociationList";
 import { Table } from "../styled";
-import { NoItems, Body, Header } from ".";
+import { NoItems, TableRow, Header } from ".";
 
 export const AssociationTable = () => {
   const { data, error, loading } = useAssociationList();
@@ -10,6 +10,7 @@ export const AssociationTable = () => {
     console.log(error);
     return <div>there's an error</div>;
   }
+
   if (loading) return <div>spinner</div>;
 
   if (!data || data.associations.length === 0) return <NoItems />;
@@ -17,7 +18,11 @@ export const AssociationTable = () => {
   return (
     <Table>
       <Header />
-      <Body associations={data?.associations} />
+      <tbody>
+        {data?.associations.map((el) => (
+          <TableRow key={el.target?.id || ""} association={el} />
+        ))}
+      </tbody>
     </Table>
   );
 };

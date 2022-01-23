@@ -1,5 +1,5 @@
 export { AssociationTable } from "./AssociationTable";
 export { NoItems } from "./NoItems";
-export { Body } from "./Body";
+export { TableRow } from "./TableRow";
 export { Header } from "./Header";
 export { Graph } from "./Graph";

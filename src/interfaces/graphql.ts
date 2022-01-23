@@ -1,4 +1,4 @@
-import { Data } from "./associations";
+import { Data, Datasources, Datatypes } from "./associations";
 
 export interface IFilter {
   take: Number;
@@ -9,6 +9,14 @@ export interface IScoreParms {
   id: String;
 }
 
-export interface IAssociations {
+export interface IAssociationsResponse {
   associations: Data[];
+}
+
+export interface IScoreByIdResponse {
+  scoresById: IScoreContent;
+}
+
+interface IScoreContent {
+  datatypes: Datatypes;
 }
