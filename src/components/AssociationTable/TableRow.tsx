@@ -32,10 +32,10 @@ export const TableRow = ({ association }: IProps) => {
           </a>
         </td>
         <td>{association.target?.geneInfo?.name}</td>
-        <td>{association.associationScore?.overall}</td>
+        <td>{association.associationScore?.overall?.toFixed(4)}</td>
       </Row>
       {expanded ? (
-        <Graph targetId={association.target?.id?.valueOf() || ""} />
+        <Graph targetId={association.target?.id || ""} />
       ) : null}
     </>
   );

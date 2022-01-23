@@ -24,13 +24,19 @@ export const Graph = ({ targetId }: IProps) => {
 
   if (data?.scoresById.datatypes === undefined) return <FullRow />;
 
+  const filteredData = Object.entries(data?.scoresById.datatypes).filter(
+    (entry) => entry[0] !== "__typename"
+  );
+
   return (
-    <div onClick={() => setShuffleChart((shuffle) => !shuffle)}>
-      {shuffleChart ? (
-        <BarChart datasources={data?.scoresById.datatypes} />
-      ) : (
-        <RadarChart datasources={data?.scoresById.datatypes} />
-      )}
-    </div>
+    <tr onClick={() => setShuffleChart((shuffle) => !shuffle)}>
+      <td colSpan={4}>
+        {shuffleChart ? (
+          <BarChart datasources={filteredData} />
+        ) : (
+          <RadarChart datasources={filteredData} />
+        )}
+      </td>
+    </tr>
   );
 };

@@ -11,9 +11,10 @@ import {
   ChartOptions,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
+import { Maybe } from "graphql/jsutils/Maybe";
 
 interface IProps {
-  datasources: Datatypes;
+  datasources: [string, "Datatypes" | Maybe<number>][];
 }
 
 ChartJS.register(
@@ -27,7 +28,11 @@ ChartJS.register(
 
 export const options = {
   responsive: true,
+  maintainAspectRatio: false,
   scales: {
+    y: {      
+      suggestedMax: 1      
+    },
     x: {
       grid: {
         offset: true,
@@ -39,7 +44,7 @@ export const options = {
   },
   plugins: {
     legend: {
-      display: false
+      display: false,
     },
     title: {
       display: true,
@@ -49,17 +54,15 @@ export const options = {
 };
 
 export const BarChart = ({ datasources }: IProps) => {
-  const labels = Object.keys(datasources);
-
   const data = {
-    labels,
+    labels: datasources.map((entry) => entry[0]),
     datasets: [
       {
         label: "",
-        data: Object.values(datasources),
+        data: Object.values(datasources.map((entry) => entry[1])),
         backgroundColor: "rgb(52,136,203)",
       },
     ],
   };
-  return <Bar options={options} data={data} />;
+  return <Bar height={400} width={400} options={options} data={data} />;
 };

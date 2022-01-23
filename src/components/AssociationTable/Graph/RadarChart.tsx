@@ -10,9 +10,10 @@ import {
   Legend,
 } from "chart.js";
 import { Radar } from "react-chartjs-2";
+import { Maybe } from "graphql/jsutils/Maybe";
 
 interface IProps {
-  datasources: Datatypes;
+  datasources: [string, "Datatypes" | Maybe<number>][];
 }
 
 ChartJS.register(
@@ -24,17 +25,39 @@ ChartJS.register(
   Legend
 );
 
+const options = {
+  maintainAspectRatio: false,
+  scale: {
+    r: {
+      suggestedMax: 1,
+      ticks: {
+        max: 1,
+        stepSize: 0.25,
+    },
+    },
+  },
+  plugins: {
+    legend: {
+      display: false,
+    },
+    title: {
+      display: true,
+      text: "Association Score vs Data Type",
+    },
+  },
+};
+
 export const RadarChart = ({ datasources }: IProps) => {
   const data = {
-    labels: Object.keys(datasources),
+    labels: datasources.map((entry) => entry[0]),
     datasets: [
       {
-        label: "# of Votes",
-        data: Object.values(datasources),
+        data: Object.values(datasources.map((entry) => entry[1])),
         borderColor: "rgb(52,136,203)",
+        backgroundColor: "rgba(0,0,0,0)",
         borderWidth: 1,
       },
     ],
   };
-  return <Radar data={data} />;
+  return <Radar height={400} width={400} data={data} options={options} />;
 };
