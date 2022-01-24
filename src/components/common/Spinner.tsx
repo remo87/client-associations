@@ -5,6 +5,7 @@ import { FaAtom } from "react-icons/fa";
 export const Spinner = () => (
   <StyledSpinner>
     <circle
+      data-testid="loading-spinner"
       className="path"
       cx="25"
       cy="25"

@@ -12,10 +12,12 @@ export const Table = styled.table`
     padding-left: 5px;
   }
 
+  tr {
+    height: 4em;
+  }
+
   th {
     border: 1px solid #9f9f9e;
-    padding-top: 10px;
-    padding-bottom: 10px;
     font-size: 14px;
   }
 

@@ -64,5 +64,5 @@ export const BarChart = ({ datasources }: IProps) => {
       },
     ],
   };
-  return <Bar height={400} width={400} options={options} data={data} />;
+  return <Bar data-testid="bargraph" height={400} width={400} options={options} data={data} />;
 };

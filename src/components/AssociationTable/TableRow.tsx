@@ -18,14 +18,19 @@ export const TableRow = ({ association }: IProps) => {
   return (
     <>
       <Row>
-        <td onClick={shuffleExpanded}>{expanded ? <FaMinus /> : <FaPlus />}</td>
+        <td>
+          <button
+            data-testid={`expand-${association.id}`}
+            onClick={shuffleExpanded}
+            type="button"
+          >
+            {expanded ? <FaMinus /> : <FaPlus />}
+          </button>
+        </td>
         <td>
           <a
             target="_blank"
-            href={
-              `https://platform.opentargets.org/target/` +
-              association.id
-            }
+            href={`https://platform.opentargets.org/target/` + association.id}
             rel="noreferrer"
           >
             {association.symbol}
@@ -34,9 +39,7 @@ export const TableRow = ({ association }: IProps) => {
         <td>{association.name}</td>
         <td>{association.overall?.toFixed(4)}</td>
       </Row>
-      {expanded ? (
-        <Graph targetId={association.id || ""} />
-      ) : null}
+      {expanded ? <Graph targetId={association.id || ""} /> : null}
     </>
   );
 };

@@ -59,5 +59,5 @@ export const RadarChart = ({ datasources }: IProps) => {
       },
     ],
   };
-  return <Radar height={400} width={400} data={data} options={options} />;
+  return <Radar  data-testid="radargraph" height={400} width={400} data={data} options={options} />;
 };
