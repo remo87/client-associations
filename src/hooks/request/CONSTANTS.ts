@@ -1,0 +1,5 @@
+export const CONSTANTS = {
+    LOADING: 'LOADING',
+    REJECTED: 'REJECTED',
+    SET_DATA: 'SET_DATA',
+}

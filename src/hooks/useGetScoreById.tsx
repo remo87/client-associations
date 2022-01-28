@@ -1,19 +1,13 @@
-import { useQuery } from "@apollo/client";
-import { IScoreByIdResponse } from "../interfaces/graphql";
-import { IScoreParms } from "../interfaces/graphql";
-import { GET_CORE_BY_ID } from "../graphql/queries";
+import { config } from "../config";
+import { IScores } from "../interfaces/graphql";
+import { useRequest } from "./request";
 
 export const useGetScoreById = (targeId: String) => {
-  const resp = useQuery<IScoreByIdResponse, IScoreParms>(
-    GET_CORE_BY_ID,
-    {
-      variables: {
-        id: targeId,
-      },
-    }
+  const { data, error, loading } = useRequest(
+    `${config.apiUri}${config.associationsEndpoint}/${targeId}`
   );
-  
-  const { data, error, loading } = resp;
 
-  return { data, error, loading };
+  const scores = data as IScores
+
+  return { scores, error, loading };
 };

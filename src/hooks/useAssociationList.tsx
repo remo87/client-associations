@@ -1,22 +1,23 @@
-import { useQuery } from "@apollo/client";
-import { IAssociationsResponse, IDataListItem } from "../interfaces/graphql";
-import { IFilter } from "../interfaces/graphql";
-import { GET_ASSOCIATIONLIST } from "../graphql/queries";
+import { IDataListItem } from "../interfaces/graphql";
+import { config } from "../config";
+import { useRequest } from "./request";
 
 export const useAssociationList = () => {
-  const { data, error, loading } = useQuery<IAssociationsResponse, IFilter>(
-    GET_ASSOCIATIONLIST
+  const { data, error, loading } = useRequest(
+    `${config.apiUri}${config.associationsEndpoint}`
   );
+
+  const listItems = data as IDataListItem[];
 
   let mappedData: IDataListItem[] = [];
   if (!error && !loading) {
-    mappedData = data?.associations
-      ? data?.associations.map((asso) => {
+    mappedData = listItems
+      ? listItems.map((asso) => {
           const mapped: IDataListItem = {
-            id: asso.target?.id,
-            symbol: asso.target?.geneInfo?.symbol,
-            name: asso.target?.geneInfo?.name,
-            overall: asso.associationScore?.overall,
+            id: asso.id,
+            symbol: asso.symbol,
+            name: asso.name,
+            overall: asso.overall,
           };
           return mapped;
         })

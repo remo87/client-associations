@@ -1,5 +1,4 @@
 import React from "react";
-import { Datatypes } from "../../../interfaces/associations";
 import {
   Chart as ChartJS,
   CategoryScale,

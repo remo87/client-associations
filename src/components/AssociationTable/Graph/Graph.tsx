@@ -18,7 +18,7 @@ const FullRow: FC<IRowProps> = ({ children }) => (
 
 export const Graph = ({ targetId }: IProps) => {
   const [shuffleChart, setShuffleChart] = useState(false);
-  const { data, error, loading } = useGetScoreById(targetId);
+  const { scores, error, loading } = useGetScoreById(targetId);
 
   if (error)
     return (
@@ -39,11 +39,9 @@ export const Graph = ({ targetId }: IProps) => {
       </FullRow>
     );
 
-  if (data?.scoresById.datatypes === undefined) return <FullRow />;
+  if (scores === undefined) return <FullRow />;
 
-  const filteredData = Object.entries(data?.scoresById.datatypes).filter(
-    (entry) => entry[0] !== "__typename"
-  );
+  const filteredData = Object.entries(scores);
 
   return (
     <tr onClick={() => setShuffleChart((shuffle) => !shuffle)}>

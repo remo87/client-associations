@@ -1,5 +1,3 @@
-import React from "react";
-import { Datasources, Datatypes } from "../../../interfaces/associations";
 import {
   Chart as ChartJS,
   RadialLinearScale,

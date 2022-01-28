@@ -1,30 +1,16 @@
-import { Maybe } from "graphql/jsutils/Maybe";
-import { Data, Datasources, Datatypes } from "./associations";
-
-export interface IFilter {
-  take: Number;
-  skip: Number;
-}
-
-export interface IScoreParms {
-  id: String;
-}
-
-export interface IAssociationsResponse {
-  associations: Data[];
-}
-
 export interface IDataListItem {
-  id: Maybe<string> | undefined,
-  symbol: Maybe<string> | undefined,
-  name: Maybe<string> | undefined,
-  overall: Maybe<number> | undefined
+  id: string;
+  symbol: string;
+  name: string;
+  overall: number;
 }
 
-export interface IScoreByIdResponse {
-  scoresById: IScoreContent;
-}
-
-interface IScoreContent {
-  datatypes: Datatypes;
+export interface IScores {
+  literature: number
+  rnaExpression: number
+  geneticAssociation: number
+  somaticMutation: number
+  knownDrug: number
+  animalModel: number
+  affectedPathway: number
 }
