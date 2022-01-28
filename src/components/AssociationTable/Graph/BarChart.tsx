@@ -11,6 +11,7 @@ import {
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 import { Maybe } from "graphql/jsutils/Maybe";
+import { BarGraphContainer } from "../../styled";
 
 interface IProps {
   datasources: [string, "Datatypes" | Maybe<number>][];
@@ -29,8 +30,8 @@ export const options = {
   responsive: true,
   maintainAspectRatio: false,
   scales: {
-    y: {      
-      suggestedMax: 1      
+    y: {
+      suggestedMax: 1,
     },
     x: {
       grid: {
@@ -63,5 +64,15 @@ export const BarChart = ({ datasources }: IProps) => {
       },
     ],
   };
-  return <Bar data-testid="bargraph" height={400} width={400} options={options} data={data} />;
+  return (
+    <BarGraphContainer>
+      <Bar
+        data-testid="bargraph"
+        height={400}
+        width={400}
+        options={options}
+        data={data}
+      />
+    </BarGraphContainer>
+  );
 };
