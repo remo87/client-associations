@@ -1,12 +1,14 @@
-# Getting Started with Create React App
+# Associations React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project shows a table of associations with two graphs you can see the 5 associations with highest overall association score. Once you can see the table you can click in the plus sign to see a detailed radar and bar graph of the associations you can move between graphs by clicking in the graph.
 
 ## Available Scripts
 
 In the project directory, you can run:
 
 ### `npm start`
+
+if you run this command you'll have to set the config.ts key apiUri to match your development Api Url. You can find this file in the folder src/config.
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
