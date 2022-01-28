@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Associations React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project shows a table of associations with two graphs you can see the 5 associations with highest overall association score. Once you can see the table you can click in the plus sign to see a detailed radar and bar graph of the associations you can move between graphs by clicking in the graph. 
 
 ## Available Scripts
 
